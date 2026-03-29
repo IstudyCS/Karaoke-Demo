@@ -4,7 +4,7 @@
 <div class="now-playing">
   <div class="album-art">&#9835;</div>
   <div class="track-info">
-    <div class="track-title">Chasing</div>
+    <div class="track-title">Winning</div>
     <div class="track-artist">NEFFEX</div>
   </div>
 </div>

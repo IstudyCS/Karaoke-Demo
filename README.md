@@ -61,7 +61,7 @@ make dev           # Start both backend and frontend
 
 ## Audio
 
-The demo uses **"Chasing" by NEFFEX**, a royalty-free track from the [YouTube Audio Library](https://studio.youtube.com/channel/audio) (no attribution required, free for any use). Vocal and instrumental tracks are included in the repository.
+The demo uses **"Winning" by NEFFEX**, a royalty-free track from the [YouTube Audio Library](https://studio.youtube.com/channel/audio) (no attribution required, free for any use). Vocal and instrumental tracks are included in the repository.
 
 ## Project Structure
 
