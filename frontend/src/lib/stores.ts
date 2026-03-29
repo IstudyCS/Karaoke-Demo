@@ -6,7 +6,6 @@ export const connectionStatus = writable<
 >("connecting");
 
 export const demoMode = writable(false);
-export const audioAvailable = writable(true);
 
 export const currentPosition = writable(4);
 export const lyrics = writable<LyricLine[]>([]);

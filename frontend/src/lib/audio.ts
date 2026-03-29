@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { isPlaying, playbackTime, songDuration, addLogMessage, audioAvailable as audioAvailableStore } from "./stores";
+import { isPlaying, playbackTime, songDuration, addLogMessage } from "./stores";
 
 let audioCtx: AudioContext | null = null;
 let vocalGain: GainNode | null = null;
@@ -40,11 +40,9 @@ async function initAudio(): Promise<void> {
     instrBuffer = iBuf;
     songDuration.set(vBuf.duration);
     audioAvailable = true;
-    audioAvailableStore.set(true);
   } catch {
     songDuration.set(FALLBACK_DURATION);
     audioAvailable = false;
-    audioAvailableStore.set(false);
     addLogMessage({
       direction: "rx",
       type: "audio",

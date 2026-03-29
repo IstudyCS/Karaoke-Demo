@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { connectionStatus, demoMode, audioAvailable } from "../lib/stores";
+  import { connectionStatus, demoMode } from "../lib/stores";
 </script>
 
 {#if $demoMode}
   <div class="status demo">
-    <strong>Live Demo</strong> — backend simulated in-browser.
-    {#if !$audioAvailable}
-      Audio files are not included (copyright). Press play to see lyrics sync, progress bar, and slider — all functional without sound.
-    {/if}
-    <a href="https://github.com/IstudyCS/Karaoke-Demo#quick-start-docker" target="_blank">Run locally</a> for the full experience with audio + real C++ WebSocket backend.
+    Demo Mode — backend simulated in-browser, audio is silent (files not bundled for copyright reasons).
+    <a href="https://github.com/IstudyCS/Karaoke-Demo#quick-start-docker" target="_blank">Run locally</a> for the full experience with sound.
   </div>
 {:else}
   <div class="status" class:connected={$connectionStatus === "connected"} class:disconnected={$connectionStatus !== "connected"}>
@@ -38,15 +35,11 @@
     border: 1px solid rgba(244, 67, 54, 0.35);
   }
   .demo {
-    color: #c0c0d0;
-    background: rgba(240, 198, 116, 0.06);
-    border: 1px solid rgba(240, 198, 116, 0.25);
-    padding: 8px 16px;
-    line-height: 1.7;
-    font-size: 11.5px;
-  }
-  .demo strong {
     color: #f0c674;
+    background: rgba(240, 198, 116, 0.1);
+    border: 1px solid rgba(240, 198, 116, 0.3);
+    padding: 6px 16px;
+    line-height: 1.6;
   }
   .demo a {
     color: #7eb8f7;
