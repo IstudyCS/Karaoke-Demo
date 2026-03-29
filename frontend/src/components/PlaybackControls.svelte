@@ -1,28 +1,18 @@
 <script lang="ts">
   import { isPlaying, addLogMessage } from "../lib/stores";
-  import { togglePlayback, audioAvailable } from "../lib/audio";
+  import { togglePlayback } from "../lib/audio";
   import { send } from "../lib/websocket";
-  import AudioModal from "./AudioModal.svelte";
-
-  let showModal = $state(false);
-  let modalShown = false;
 
   async function handleClick() {
     const started = await togglePlayback();
     if (started) {
       send({ type: "enableSourceSdkPlayer", enabled: true });
       addLogMessage({ direction: "rx", type: "play" });
-      if (!audioAvailable && !modalShown) {
-        showModal = true;
-        modalShown = true;
-      }
     } else {
       addLogMessage({ direction: "rx", type: "pause" });
     }
   }
 </script>
-
-<AudioModal bind:show={showModal} onclose={() => {}} />
 
 <div class="controls">
   <button class="play-btn" onclick={handleClick}>
