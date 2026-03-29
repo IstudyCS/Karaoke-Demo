@@ -19,10 +19,6 @@ Thumbs.db
 .env
 .env.local
 
-# Audio files (supply your own -- see README)
-frontend/public/*.mp3
-frontend/public/*.wav
-
 # State file (generated at runtime)
 karaoke_state.json
 

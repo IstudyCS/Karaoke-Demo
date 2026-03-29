@@ -59,13 +59,9 @@ make dev           # Start both backend and frontend
 - Frontend: http://localhost:5173
 - Backend WebSocket: ws://localhost:9001
 
-## Audio Files
+## Audio
 
-Audio files are **not included** in this repository. To run the demo with sound, place your own tracks in `frontend/public/`:
-- `vocal.mp3` — isolated vocal track
-- `instrumental.mp3` — instrumental/accompaniment track
-
-You can obtain separated vocal/instrumental tracks from services like [LALAL.AI](https://www.lalal.ai/) or [Moises](https://moises.ai/). The demo expects a ~30 second clip. Any stereo MP3 will work. Update the lyrics timestamps in `backend/server.cpp` to match your chosen song.
+The demo uses **"Chasing" by NEFFEX**, a royalty-free track from the [YouTube Audio Library](https://studio.youtube.com/channel/audio) (no attribution required, free for any use). Vocal and instrumental tracks are included in the repository.
 
 ## Project Structure
 
