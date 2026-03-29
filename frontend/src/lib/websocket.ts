@@ -11,8 +11,11 @@ import { MockBackend } from "./mock-backend";
 
 let ws: WebSocket | null = null;
 let mock: MockBackend | null = null;
+let hasConnected = false;
+let failCount = 0;
 
 export function connect(): void {
+  if (mock) return;
   connectionStatus.set("connecting");
 
   try {
@@ -22,29 +25,27 @@ export function connect(): void {
     return;
   }
 
-  const connectTimeout = setTimeout(() => {
-    if (ws?.readyState !== WebSocket.OPEN) {
-      ws?.close();
-      activateMockMode();
-    }
-  }, 3000);
-
   ws.onopen = () => {
-    clearTimeout(connectTimeout);
+    hasConnected = true;
+    failCount = 0;
     connectionStatus.set("connected");
     addLogMessage({ direction: "tx", type: "connected" });
   };
 
   ws.onclose = () => {
-    clearTimeout(connectTimeout);
     if (mock) return;
+    if (!hasConnected) {
+      failCount++;
+      if (failCount >= 2) {
+        activateMockMode();
+        return;
+      }
+    }
     connectionStatus.set("disconnected");
-    setTimeout(connect, 3000);
+    setTimeout(connect, 2000);
   };
 
-  ws.onerror = () => {
-    clearTimeout(connectTimeout);
-  };
+  ws.onerror = () => {};
 
   ws.onmessage = (event: MessageEvent) => {
     const msg: TxMessage = JSON.parse(event.data);
