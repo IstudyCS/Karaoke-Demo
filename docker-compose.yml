@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "9001:9001"
+    environment:
+      - KARAOKE_STATE_FILE=/tmp/karaoke_state.json
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/public:/app/public
