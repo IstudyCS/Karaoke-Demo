@@ -4,7 +4,6 @@
   import ConnectionStatus from "./components/ConnectionStatus.svelte";
   import NowPlaying from "./components/NowPlaying.svelte";
   import ProgressBar from "./components/ProgressBar.svelte";
-  import Lyrics from "./components/Lyrics.svelte";
   import PlaybackControls from "./components/PlaybackControls.svelte";
   import WSBridge from "./components/WSBridge.svelte";
   import SlideSwitch from "./components/SlideSwitch.svelte";
@@ -30,7 +29,6 @@
         </div>
         <NowPlaying />
         <ProgressBar />
-        <Lyrics />
         <PlaybackControls />
       </div>
 

@@ -9,6 +9,7 @@ let accomSource: AudioBufferSourceNode | null = null;
 let vocalBuffer: AudioBuffer | null = null;
 let instrBuffer: AudioBuffer | null = null;
 let playStartTime = 0;
+let pausedAt = 0;
 let animFrameId: number | null = null;
 let audioAvailable = false;
 
@@ -95,6 +96,9 @@ function startPlaybackFrom(offset: number = 0): void {
 }
 
 function stopPlayback(): void {
+  if (audioCtx) {
+    pausedAt = Math.min(audioCtx.currentTime - playStartTime, get(songDuration));
+  }
   try { vocalSource?.stop(); } catch { /* already stopped */ }
   try { accomSource?.stop(); } catch { /* already stopped */ }
   isPlaying.set(false);
@@ -113,7 +117,7 @@ export async function togglePlayback(): Promise<boolean> {
     stopPlayback();
     return false;
   } else {
-    startPlaybackFrom(0);
+    startPlaybackFrom(pausedAt >= get(songDuration) ? 0 : pausedAt);
     return true;
   }
 }
