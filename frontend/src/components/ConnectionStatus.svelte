@@ -4,8 +4,8 @@
 
 {#if $demoMode}
   <div class="status demo">
-    Demo Mode — backend simulated in-browser, audio is silent (files not bundled for copyright reasons).
-    <a href="https://github.com/IstudyCS/Karaoke-Demo#quick-start-docker" target="_blank">Run locally</a> for the full experience with sound.
+    Demo Mode — backend simulated in-browser.
+    <a href="https://github.com/IstudyCS/karaoke-demo#quick-start-docker" target="_blank">Run locally</a> for the full WebSocket experience.
   </div>
 {:else}
   <div class="status" class:connected={$connectionStatus === "connected"} class:disconnected={$connectionStatus !== "connected"}>

@@ -10,7 +10,7 @@ let vocalBuffer: AudioBuffer | null = null;
 let instrBuffer: AudioBuffer | null = null;
 let playStartTime = 0;
 let animFrameId: number | null = null;
-let audioAvailable = false;
+export let audioAvailable = false;
 
 const VOCAL_URL = "./vocal.mp3";
 const INSTRUMENTAL_URL = "./instrumental.mp3";
