@@ -11,11 +11,20 @@ import { MockBackend } from "./mock-backend";
 
 let ws: WebSocket | null = null;
 let mock: MockBackend | null = null;
-let hasConnected = false;
-let failCount = 0;
+
+const isLocal =
+  typeof window !== "undefined" &&
+  (window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1");
 
 export function connect(): void {
   if (mock) return;
+
+  if (!isLocal) {
+    activateMockMode();
+    return;
+  }
+
   connectionStatus.set("connecting");
 
   try {
@@ -26,23 +35,14 @@ export function connect(): void {
   }
 
   ws.onopen = () => {
-    hasConnected = true;
-    failCount = 0;
     connectionStatus.set("connected");
     addLogMessage({ direction: "tx", type: "connected" });
   };
 
   ws.onclose = () => {
     if (mock) return;
-    if (!hasConnected) {
-      failCount++;
-      if (failCount >= 2) {
-        activateMockMode();
-        return;
-      }
-    }
     connectionStatus.set("disconnected");
-    setTimeout(connect, 2000);
+    setTimeout(connect, 3000);
   };
 
   ws.onerror = () => {};
