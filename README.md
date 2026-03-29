@@ -1,6 +1,6 @@
 # Karaoke Demo — Hybrid Native/Web Audio Architecture
 
-**[Live Demo](https://istudycs.github.io/karaoke-demo/)** — try it instantly, no install needed
+**[Live Demo](https://istudycs.github.io/Karaoke-Demo/)** — try it instantly, no install needed
 
 > **Disclaimer:** This project is an independent technical demonstration of a hybrid native/web audio architecture. It is not affiliated with any company and contains no proprietary code. All architecture patterns shown are based on publicly available information.
 
